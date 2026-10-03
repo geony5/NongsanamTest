@@ -3,6 +3,14 @@
    Palette: 한지(paper) · 먹(ink) · 단청 주홍(accent)
    ========================================================================== */
 
+@font-face {
+  font-family: "Gowun Dodum";
+  src: url("../fonts/GowunDodum-Regular.ttf") format("truetype");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --paper: #f3efe6;
   --paper-2: #ebe5d8;
@@ -14,7 +22,7 @@
   --accent: #c2412a;
 
   --serif: "Noto Serif KR", "Nanum Myeongjo", serif;
-  --sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+  --sans: "Gowun Dodum", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 
   --gutter: clamp(20px, 4vw, 56px);
@@ -183,9 +191,32 @@ figcaption .mono { color: var(--ink); font-size: 11px; }
 .header-inner { height: 100%; display: flex; align-items: center; justify-content: space-between; }
 
 .brand { display: flex; align-items: center; gap: 12px; }
-.brand-mark { width: 30px; height: 30px; transition: transform 0.9s var(--ease); }
-.brand:hover .brand-mark { transform: rotate(-200deg); }
-.brand-dot { fill: var(--accent); }
+.brand-mark-wrap {
+  position: relative;
+  width: 58px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.brand-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: opacity 0.4s var(--ease), transform 0.4s var(--ease);
+}
+.brand-logo-light { opacity: 1; }
+.brand-logo-dark { opacity: 0; }
+.site-header.is-solid .brand-logo-light { opacity: 0; }
+.site-header.is-solid .brand-logo-dark { opacity: 1; }
+.menu-open .site-header .brand-logo-light { opacity: 1 !important; }
+.menu-open .site-header .brand-logo-dark { opacity: 0 !important; }
+.brand:hover .brand-logo { transform: translate(-50%, -50%) scale(1.06); }
 .brand-text { display: flex; flex-direction: column; line-height: 1.15; }
 .brand-ko { font-family: var(--serif); font-weight: 600; font-size: 17px; letter-spacing: -0.02em; }
 .brand-en { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.6; }
@@ -753,7 +784,16 @@ figcaption .mono { color: var(--ink); font-size: 11px; }
   padding: 32px 0; border-top: 1px solid var(--line-light);
   font-size: 14px;
 }
-.footer-brand { display: flex; flex-direction: column; gap: 4px; }
+.footer-brand { display: flex; flex-direction: column; gap: 6px; }
+.footer-logo {
+  width: 124px;
+  height: auto;
+  margin-bottom: 12px;
+  display: block;
+  opacity: 0.92;
+  transition: opacity 0.3s;
+}
+.footer-logo:hover { opacity: 1; }
 .footer-brand strong { font-family: var(--serif); font-weight: 600; font-size: 17px; }
 .footer-brand span, .footer-meta { color: rgba(243, 239, 230, 0.55); }
 .footer-meta li { line-height: 1.9; }
@@ -834,6 +874,9 @@ figcaption .mono { color: var(--ink); font-size: 11px; }
 }
 
 @media (max-width: 560px) {
+  .brand-mark-wrap { width: 48px; height: 32px; }
+  .brand-ko { font-size: 15.5px; }
+  .brand-en { font-size: 8.5px; }
   .hero-title { letter-spacing: -0.04em; }
   .hero-actions { gap: 20px; }
   .flow, .timeline { grid-template-columns: 1fr; }
