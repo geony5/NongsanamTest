@@ -193,8 +193,8 @@ figcaption .mono { color: var(--ink); font-size: 11px; }
 .brand { display: flex; align-items: center; gap: 12px; }
 .brand-mark-wrap {
   position: relative;
-  width: 58px;
-  height: 38px;
+  width: 76px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -786,7 +786,7 @@ figcaption .mono { color: var(--ink); font-size: 11px; }
 }
 .footer-brand { display: flex; flex-direction: column; gap: 6px; }
 .footer-logo {
-  width: 124px;
+  width: 140px;
   height: auto;
   margin-bottom: 12px;
   display: block;
@@ -874,7 +874,7 @@ figcaption .mono { color: var(--ink); font-size: 11px; }
 }
 
 @media (max-width: 560px) {
-  .brand-mark-wrap { width: 48px; height: 32px; }
+  .brand-mark-wrap { width: 62px; height: 29px; }
   .brand-ko { font-size: 15.5px; }
   .brand-en { font-size: 8.5px; }
   .hero-title { letter-spacing: -0.04em; }
